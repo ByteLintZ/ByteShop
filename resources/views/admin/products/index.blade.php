@@ -7,12 +7,12 @@
         Manage Products
     </h1>
 
-    <!-- Add Product Button -->
+    {{-- <!-- Add Product Button -->
     <div class="flex justify-end mb-4">
         <button @click="showCreateModal = true" class="bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-3 rounded shadow hover:from-green-500 hover:to-green-700 transition duration-300">
             + Add Product
         </button>
-    </div>
+    </div> --}}
 
     <!-- Product Table -->
     <div class="bg-white shadow-md rounded-lg overflow-hidden">
@@ -49,6 +49,12 @@
                 @endforeach
             </tbody>
         </table>
+    </div>
+
+    <div class="flex justify-end mb-4">
+        <button @click="showCreateModal = true" class="bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-3 rounded shadow hover:from-green-500 hover:to-green-700 transition duration-300">
+            + Add Product
+        </button>
     </div>
 
     <!-- Pagination -->

@@ -8,6 +8,7 @@ use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class OrderController extends Controller
 {
@@ -72,4 +73,16 @@ class OrderController extends Controller
         $order->save();
         return back()->with('error', 'Order rejected.');
     }
+
+
+public function downloadReceipt(Order $order)
+{
+    if ($order->status !== 'approved' || $order->user_id !== auth()->id()) {
+        abort(403);
+    }
+
+    $pdf = Pdf::loadView('orders.receipt', ['order' => $order]);
+    return $pdf->download('receipt_order_' . $order->id . '.pdf');
+}
+
 }

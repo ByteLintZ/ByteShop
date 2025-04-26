@@ -10,12 +10,13 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-        <!-- Scripts -->
+        <!-- Styles & Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+    <body class="font-sans antialiased bg-gray-100 text-gray-900">
+        <div class="min-h-screen">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
@@ -27,10 +28,20 @@
                 </header>
             @endisset
 
-            <!-- Page Content -->
+            <!-- Main Content -->
             <main>
-                @yield('content')
+                {{-- Blade view using @yield --}}
+                @hasSection('content')
+                    @yield('content')
+                @else
+                    {{-- Blade component using {{ $slot }} --}}
+                    {{ $slot ?? '' }}
+                @endif
             </main>
         </div>
+
+        @stack('modals')
+        @livewireScripts
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     </body>
 </html>

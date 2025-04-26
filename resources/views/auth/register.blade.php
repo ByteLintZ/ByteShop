@@ -16,7 +16,7 @@
             <p class="mt-2 text-xl text-blue-200">Join our community for the best electronics deals!</p>
         </div>
 
-        <!-- Registration Form Container -->
+        <!-- Registation Form Container -->
         <div class="z-10 w-full sm:max-w-md px-8 py-10 bg-white shadow-2xl rounded-2xl">
             <form method="POST" action="{{ route('register') }}">
                 @csrf
